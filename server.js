@@ -21,6 +21,9 @@ import path from 'path';
 
 import { endpoints } from './scrappers/data.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, './client/dist')));
+
 app.use(express.json()); //used for post routes for accepting data
 app.use(cookieParser()); //103
 
@@ -30,9 +33,6 @@ app.use('/api/users', authenticateUser, userRoutes);
 app.use('/api/auth', authRouter);
 
 app.use(errorHandlerMiddleware);
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, './client/dist')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'));
