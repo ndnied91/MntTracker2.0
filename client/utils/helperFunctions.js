@@ -2,7 +2,7 @@ export const renderImage = (code) => {
   let imgIcon = '';
 
   switch (true) {
-    case code > 5000 && code <= 5102:
+    case (code) => 5000 && code <= 5102:
       imgIcon = 'heavySnow';
       break;
     case code === 1000:
@@ -34,6 +34,7 @@ export const renderImage = (code) => {
     case code === 4200:
       imgIcon = 'lightRain';
       break;
+
     default:
       imgIcon = null;
   }
