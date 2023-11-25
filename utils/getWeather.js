@@ -1,7 +1,3 @@
-import fs from 'fs';
-import { readFile } from 'fs/promises';
-import info from './data.json' assert { type: 'json' };
-
 export const getWeather = async (name) => {
   let zipcode = '';
   switch (name) {
@@ -43,15 +39,10 @@ export const getWeather = async (name) => {
       zipcode = '07067 US';
   }
 
-  console.log(zipcode);
-
   const options = { method: 'GET', headers: { accept: 'application/json' } };
 
-  // IUd89Q3FPI4UkPPDQpmMk39WiCAut0pG
   return fetch(
-    `https://api.tomorrow.io/v4/weather/forecast?location=${zipcode}&timesteps=1d&units=imperial&apikey=T41whpDPTV6vwjQwSOsUDReI0f0ReBoz`,
-    // IUd89Q3FPI4UkPPDQpmMk39WiCAut0pG
-    // 'https://api.tomorrow.io/v4/weather/forecast?location=new%20york&apikey=T41whpDPTV6vwjQwSOsUDReI0f0ReBoz',
+    `https://api.tomorrow.io/v4/weather/forecast?location=${zipcode}&timesteps=1d&units=imperial&apikey=${process.env.TOMORROW_API}`,
     options
   )
     .then(async (response) => {
