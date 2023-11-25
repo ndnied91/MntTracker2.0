@@ -31,9 +31,7 @@ const App = () => {
       try {
         const { data } = await customFetch.get('/users/current-user');
         setContextUser(data.user);
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     };
     getUser();
   }, []);

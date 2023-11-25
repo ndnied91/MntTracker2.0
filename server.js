@@ -57,7 +57,12 @@ schedule.scheduleJob('30 * * * *', async () => {
   console.log('sending a ping..');
 });
 
-schedule.scheduleJob('50 * * * *', async () => {
+schedule.scheduleJob('40 * * * *', async () => {
+  axios.get('https://mnt-tracker.onrender.com');
+  console.log('sending a ping..');
+});
+
+schedule.scheduleJob('0 * * * *', async () => {
   axios.get('https://mnt-tracker.onrender.com');
   console.log('sending a ping..');
 });

@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 export const getWeather = async (name) => {
   let zipcode = '';
   switch (name) {
