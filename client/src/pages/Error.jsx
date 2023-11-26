@@ -1,7 +1,6 @@
 import { Link, useRouteError } from 'react-router-dom';
 import styled from 'styled-components';
 import img from '../assets/404.svg';
-import sunny from '../assets/sunny.png';
 
 const Error = () => {
   const error = useRouteError();
@@ -11,7 +10,7 @@ const Error = () => {
     return (
       <Wrapper>
         <div>
-          <img src={sunny} alt="not found" />
+          <img src={img} alt="not found" />
 
           <p>We can't seem to find the page you're looking for</p>
           <Link to="/"> back home</Link>
