@@ -4,7 +4,6 @@ import img from '../assets/404.svg';
 
 const Error = () => {
   const error = useRouteError();
-  console.log(error.status);
 
   if (error.status === 404) {
     return (

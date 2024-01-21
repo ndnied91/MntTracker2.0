@@ -2,7 +2,7 @@ import { UnauthenticatedError } from '../errors/customErrors.js';
 import { verifyJWT } from '../utils/tokenUtils.js';
 
 export const authenticateUser = (req, res, next) => {
-  console.log('auth middleware check...');
+  console.log('checking current user');
 
   const { token } = req.cookies;
 

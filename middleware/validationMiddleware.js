@@ -34,7 +34,6 @@ export const validateRegisterInput = withValidationErrors([
     .withMessage('invalid email format')
     .custom(async (email) => {
       const user = await User.findOne({ email });
-      console.log(user);
       if (user) {
         throw new BadRequestError('email already exists');
       }

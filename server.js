@@ -7,7 +7,6 @@ import cookieParser from 'cookie-parser';
 import schedule from 'node-schedule';
 
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
-import axios from 'axios';
 import mountainRouter from './routes/mountainRouter.js';
 import updateRouter from './routes/updateRouter.js';
 import authRouter from './routes/authRouter.js';
@@ -44,27 +43,12 @@ app.use('*', (req, res) => {
 
 app.use(errorHandlerMiddleware);
 
-schedule.scheduleJob('10 * * * *', () => {
+schedule.scheduleJob('24 * * * *', () => {
   endpoints.forEach((item, i) => {
     setTimeout(() => {
       scrapeVail(item);
     }, i * 2000);
   });
-});
-
-schedule.scheduleJob('30 * * * *', async () => {
-  axios.get('https://mnt-tracker.onrender.com');
-  console.log('sending a ping..');
-});
-
-schedule.scheduleJob('40 * * * *', async () => {
-  axios.get('https://mnt-tracker.onrender.com');
-  console.log('sending a ping..');
-});
-
-schedule.scheduleJob('0 * * * *', async () => {
-  axios.get('https://mnt-tracker.onrender.com');
-  console.log('sending a ping..');
 });
 
 const port = 5002;
